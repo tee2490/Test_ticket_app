@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/app_styles.dart';
+import 'package:ticket_app/base/res/media.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,7 +26,16 @@ class HomeScreen extends StatelessWidget {
                         Text("Book Tickets", style: AppStyles.headLineStyle1),
                       ],
                     ),
-                    Container(color: Colors.red, width: 100, height: 70),
+                    Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: const DecorationImage(
+                          image: AssetImage(AppMedia.logo),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 const Row(
