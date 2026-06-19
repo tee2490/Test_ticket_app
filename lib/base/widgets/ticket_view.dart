@@ -31,16 +31,24 @@ class TicketView extends StatelessWidget {
                   "NYC",
                   style: AppStyles.headLineStyle3.copyWith(color: Colors.white),
                 ),
-                             Expanded(child: Container()),
+                Expanded(child: Container()),
                 const BigDot(),
-                const Expanded(
+                Expanded(
                   child: Stack(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 24,
                         child: AppLayoutBuilderWidget(randomDivider: 6),
                       ),
-                      // Center(child: Text("plane"),)
+                      Center(
+                        child: Transform.rotate(
+                          angle: 1.5,
+                          child: const Icon(
+                            Icons.local_airport_rounded,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -50,7 +58,6 @@ class TicketView extends StatelessWidget {
                   "NYC",
                   style: AppStyles.headLineStyle3.copyWith(color: Colors.white),
                 ),
-                
               ],
             ),
           ],
