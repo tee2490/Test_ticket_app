@@ -60,6 +60,27 @@ class TicketView extends StatelessWidget {
                 ),
               ],
             ),
+
+            const SizedBox(height: 3),
+            //show departure and destination names with time
+            Row(
+              children: [
+                Text(
+                  "New-York",
+                  style: AppStyles.headLineStyle3.copyWith(color: Colors.white),
+                ),
+                Expanded(child: Container()),
+                Text(
+                  "8H 30M",
+                  style: AppStyles.headLineStyle3.copyWith(color: Colors.white),
+                ),
+                Expanded(child: Container()),
+                Text(
+                  "London",
+                  style: AppStyles.headLineStyle3.copyWith(color: Colors.white),
+                ),
+              ],
+            ),
           ],
         ),
       ),
