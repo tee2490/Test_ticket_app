@@ -23,6 +23,7 @@ class HomeScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,7 +94,16 @@ class HomeScreen extends StatelessWidget {
                     print("Hello there");
                   },
                 ),
-                Hotel(),
+                const SizedBox(height: 20),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: hotelList
+                        .take(2)
+                        .map((singleHotel) => Hotel(hotel: singleHotel))
+                        .toList(),
+                  ),
+                ),
               ],
             ),
           ),
