@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:ticket_app/base/res/media.dart';
 import 'package:ticket_app/base/res/app_styles.dart';
 import 'package:ticket_app/base/utils/app_routes.dart';
@@ -83,7 +84,7 @@ class SearchScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Column(
+              Stack(
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(
@@ -116,6 +117,20 @@ class SearchScreen extends StatelessWidget {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                  Positioned(
+                    right: -45,
+                    top: -40,
+                    child: Container(
+                      padding: EdgeInsets.all(30),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          width: 18,
+                          color: AppStyles.circleColor,
+                        ),
+                      ),
                     ),
                   ),
                 ],
