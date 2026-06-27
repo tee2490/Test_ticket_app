@@ -37,6 +37,7 @@ dependencies:
   fluentui_system_icons: ^1.1.273
   barcode_widget: ^2.0.4
   get: ^4.7.3
+  flutter_bloc: ^9.1.1
 
 dev_dependencies:
   flutter_test:
