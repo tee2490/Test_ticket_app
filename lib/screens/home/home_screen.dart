@@ -7,6 +7,7 @@ import 'package:ticket_app/base/res/app_styles.dart';
 import 'package:ticket_app/base/utils/all_json.dart';
 import 'package:ticket_app/base/utils/app_routes.dart';
 import 'package:ticket_app/base/widgets/app_double_text.dart';
+import 'package:ticket_app/base/widgets/heading_text.dart';
 import 'package:ticket_app/base/widgets/ticket_view.dart';
 import 'package:ticket_app/screens/hotel/widgets/hotel.dart';
 
@@ -33,7 +34,7 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Text("Good morning", style: AppStyles.headLineStyle3),
                         const SizedBox(height: 5),
-                        Text("Book Tickets", style: AppStyles.headLineStyle1),
+                        const HeadingText(text: "Book Tickets", isColor: false),
                       ],
                     ),
                     Container(
