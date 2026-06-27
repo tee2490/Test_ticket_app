@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ticket_app/base/res/app_styles.dart';
 import 'package:ticket_app/base/utils/all_json.dart';
-import 'package:get/get.dart';
-import 'package:ticket_app/controller/text_expansion_controller.dart';
+import 'package:ticket_app/bloc/text_expansion_blocs.dart';
+import 'package:ticket_app/bloc/text_expansion_events.dart';
+import 'package:ticket_app/bloc/text_expansion_states.dart';
 
 class HotelDetail extends StatefulWidget {
   const HotelDetail({super.key});
@@ -126,37 +128,44 @@ class _HotelDetailState extends State<HotelDetail> {
 }
 
 class ExpandedTextWidget extends StatelessWidget {
-  ExpandedTextWidget({super.key, required this.text});
+  const ExpandedTextWidget({super.key, required this.text});
   final String text;
 
-  final TextExpansionController controller = Get.put(TextExpansionController());
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      var textWidget = Text(
-        text,
-        maxLines: controller.isExpanded.value ? null : 9,
-        overflow: controller.isExpanded.value
-            ? TextOverflow.visible
-            : TextOverflow.ellipsis,
-      );
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          textWidget,
-          GestureDetector(
-            onTap: () {
-              controller.toggleExpansion();
-            },
-            child: Text(
-              controller.isExpanded.value ? 'Less' : 'More',
-              style: AppStyles.textStyle.copyWith(
-                color: AppStyles.primaryColor,
+    return BlocBuilder<TextExpansionBloc, TextExpansionStates>(
+      builder: (context, state) {
+        if (state is IsExpandedState) {
+          var isExpanded = state.isExpanded;
+          var textWidget = Text(
+            text,
+            maxLines: isExpanded ? null : 9,
+            overflow: isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
+          );
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              textWidget,
+              GestureDetector(
+                onTap: () {
+                  context.read<TextExpansionBloc>().add(
+                    IsExpandedEvent(!isExpanded),
+                  );
+                },
+                child: Text(
+                  isExpanded ? 'Less' : 'More',
+                  style: AppStyles.textStyle.copyWith(
+                    color: AppStyles.primaryColor,
+                  ),
+                ),
               ),
-            ),
-          ),
-        ],
-      );
-    });
+            ],
+          );
+        } else {
+          return Container();
+        }
+      },
+    );
   }
 }

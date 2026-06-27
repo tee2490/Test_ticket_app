@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/bottom_nav.dart';
 import 'package:ticket_app/base/utils/app_routes.dart';
+import 'package:ticket_app/bloc/text_expansion_blocs.dart';
 import 'package:ticket_app/screens/home/widgets/all_hotels.dart';
 import 'package:ticket_app/screens/home/widgets/all_tickets.dart';
 import 'package:ticket_app/screens/hotel/widgets/hotel_detail.dart';
@@ -17,8 +18,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => BottomNavBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => BottomNavBloc()),
+        BlocProvider(create: (_) => TextExpansionBloc()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {
